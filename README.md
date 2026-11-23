@@ -3,7 +3,9 @@
 Power-flow, Monte-Carlo hosting-capacity, and short-circuit study of a 55-customer residential low-voltage (LV) feeder under Perth solar conditions, built in Python with `pandapower`.
 
 **Author:** Revant Bisht - BEng (Hons) Electrical & Electronic Engineering, University of Western Australia  
+
 **Portfolio Links:** [revant-bisht.github.io](https://revant-bisht.github.io/) · [Technical Blog](https://revantblogs.vercel.app/)
+
 **Status:** Work in progress (target `v1.0`: Dec 2026)
 
 ---
@@ -49,7 +51,7 @@ This repository models a Perth-parameterised LV residential feeder to quantify:
 
 ## 4. Assumptions & Limitations
 
-* **Nominal voltage & statutory limits:** Western Power's existing Technical Rules specify $240/415\text{ V} \pm 6\%$ ($225.6\text{–}254.4\text{ V}$), while **AS 61000.3.100** / **AS IEC 60038** specify $230/400\text{ V} +10\%/-6\%$ ($216.2\text{–}253.0\text{ V}$), toward which WA's Technical Rules have been migrating. This study adopts **$230/400\text{ V}$ ($216.2\text{–}253.0\text{ V}$)** as the primary limit because $253.0\text{ V}$ is marginally more conservative than $254.4\text{ V}$ and aligns directly with AS/NZS 4777.2:2020 inverter control setpoints.
+* **Nominal voltage & statutory limits:** Under Western Power's *Technical Rules* (Revision 3, 1 Dec 2016, Clause 2.2.2(a)) and the *Electricity Act 1945 (WA)* s. 25(1)(d), WA's standard metropolitan LV supply is $240/415\text{ V} \pm 6\%$ ($225.6\text{–}254.4\text{ V}$) during normal operation ($\pm 8\%$ under contingency), with ongoing EPWA/ERA Technical Rules reviews proposing alignment to $230/400\text{ V}$ (**AS IEC 60038**). This study adopts the Australian steady-state standard **AS 61000.3.100** ($230/400\text{ V} +10\%/-6\%$, i.e., **$216.2\text{–}253.0\text{ V}$**) as the primary limit because $253.0\text{ V}$ is slightly more conservative than WA's $254.4\text{ V}$ ceiling and aligns directly with **AS/NZS 4777.2:2020** inverter voltage-response setpoints.
 * **Load vs. solar data sources:** The Ausgrid Solar Home dataset supplies **Sydney residential load shapes only** (used as a proxy for Australian household demand); **PVGIS** supplies **Perth** solar irradiance and PV output profiles.
 * **Balanced baseline:** Baseline load flow and Monte-Carlo runs assume balanced three-phase loading. Single-phase customer clustering can produce higher local voltage rise than a balanced model predicts.
 * **Snapshot Monte-Carlo:** Hosting-capacity curves evaluate a worst-case coincident minimum-load / peak-irradiance snapshot rather than full-year time series; time-of-day battery state-of-charge effects are evaluated separately in the representative-day simulations.
@@ -76,6 +78,7 @@ This repository models a Perth-parameterised LV residential feeder to quantify:
 | AS/NZS 4777.2 Volt-VAr + Volt-Watt | TBD | TBD | TBD | TBD |
 | Transformer Off-Load Tap (−2.5% / −5%) | TBD | TBD | TBD | TBD |
 | Community-Scale Battery (TBD kWh) | TBD | TBD | TBD | TBD |
+
 ---
 
 ## 7. Repository Structure
@@ -119,7 +122,7 @@ python -c "import pandapower as pp; print('pandapower version:', pp.__version__)
 
 ### How to Run
 ```bash
-# 1. Run 3-bus hand-calculation validation (notebook)
+# 1. Run 3-bus hand-calculation validation (notebook) (planned Day03)
 jupyter notebook notebooks/01_three_bus_validation.ipynb
 
 # 2. Run representative-day time-series and Monte-Carlo studies (planned)
@@ -131,10 +134,10 @@ jupyter notebook notebooks/01_three_bus_validation.ipynb
 ---
 
 ## 9. References
-1. AS 61000.3.100 — Electromagnetic compatibility (EMC): Steady state voltage limits in public electricity systems.
-2. AS/NZS 4777.2:2020 — Grid connection of energy systems via inverters, Part 2: Inverter requirements.
-3. Western Power — Technical Rules (LV nominal voltage $240/415\text{ V} \pm 6\%$ and ERA Technical Rules alignment proposals).
-4. IEC 60909-0 — Short-circuit currents in three-phase AC systems.
+1. **AS 61000.3.100** — *Electromagnetic compatibility (EMC): Steady state voltage limits in public electricity systems* ($230/400\text{ V} +10\%/-6\%$).
+2. **AS/NZS 4777.2:2020** — *Grid connection of energy systems via inverters, Part 2: Inverter requirements*.
+3. **Western Power** — *Technical Rules*, Revision 3 (1 December 2016), Clause 2.2.2(a) (*Steady State Power Frequency Voltage*: LV nominal $240/415\text{ V} \pm 6\%$ normal, $\pm 8\%$ contingency); see also *Electricity Act 1945 (WA)* s. 25(1)(d) and EPWA *PSSR Standards Review — Stage 3 Consultation Paper (Proposal 20)*, Sep 2025.
+4. **IEC 60909-0** — *Short-circuit currents in three-phase AC systems*.
 5. IEEE PES Distribution System Analysis Subcommittee — European Low Voltage Test Feeder (bundled via pandapower.networks).
 6. PVGIS (Joint Research Centre, European Commission) — Solar radiation and PV performance API for Perth, WA.
 7. Ausgrid — Solar Home Electricity Data (300 residential customer 30-minute demand profiles).

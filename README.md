@@ -131,8 +131,8 @@ jupyter notebook notebooks/01_three_bus_validation.ipynb
 ---
 
 ## 9. References
-1. AS 61000.3.100 — Electromagnetic compatibility (EMC): Steady state voltage limits in public electricity systems.AS/NZS 4777.
-2. 2:2020 — Grid connection of energy systems via inverters, Part 2: Inverter requirements.
+1. AS 61000.3.100 — Electromagnetic compatibility (EMC): Steady state voltage limits in public electricity systems.
+2. AS/NZS 4777.2:2020 — Grid connection of energy systems via inverters, Part 2: Inverter requirements.
 3. Western Power — Technical Rules (LV nominal voltage $240/415\text{ V} \pm 6\%$ and ERA Technical Rules alignment proposals).
 4. IEC 60909-0 — Short-circuit currents in three-phase AC systems.
 5. IEEE PES Distribution System Analysis Subcommittee — European Low Voltage Test Feeder (bundled via pandapower.networks).
